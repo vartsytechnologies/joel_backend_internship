@@ -22,3 +22,16 @@ class Appliances(models.Model):
         indexes = [
             models.Index(fields=['category', '-created_at']),
         ]
+
+class Registration(models.Model):
+    username = models.CharField(max_length=255, null=True, blank=False)
+    password = models.CharField(max_length=255, null=True, blank=False)
+    email = models.EmailField(max_length=255, null=True, blank=False)
+
+    def __str__(self):
+        return f"{self.username} | {self.email}"
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['username']),
+        ]
